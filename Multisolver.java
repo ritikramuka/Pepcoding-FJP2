@@ -45,8 +45,24 @@ public class Multisolver {
         return root;
     }
 
+    static int size;
+    static int height;
+    static int min;
+    static int max;
     public static void multisolver(Node root, int depth) {
         // write your code here
+        if (root == null) {
+            return;
+        }
+
+        size++;
+        height = Math.max(height, depth);
+        min = Math.min(min, root.data);
+        max = Math.max(max, root.data);
+
+        for (Node child : root.children) {
+            multisolver(child, depth + 1);
+        }
     }
 
     public static void main(String[] args) throws Exception {
@@ -60,6 +76,14 @@ public class Multisolver {
 
         Node root = construct(arr);
         // display(root);
+        size = 0;
+        height = 0;
+        min = Integer.MAX_VALUE;
+        max = Integer.MIN_VALUE;
         multisolver(root, 0);
+        System.out.println(size);
+        System.out.println(height);
+        System.out.println(min);
+        System.out.println(max);
     }
 }
