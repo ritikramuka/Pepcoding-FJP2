@@ -1,7 +1,8 @@
+package BST;
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class targetSUMPair {
   public static class Node {
     int data;
     Node left;
